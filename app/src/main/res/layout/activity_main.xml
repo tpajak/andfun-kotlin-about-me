@@ -14,11 +14,14 @@
         android:textAlignment="center"
         style="@style/NameStyle" />
 
-    <!-- TODO (01) Create an EditText for entering a nickname -->
-
-    <!-- TODO (02) Create a button with the caption "Done" -->
-
-    <!-- TODO (03) Create a TextView to display the nickname -->
+    <TextView
+        android:id="@+id/nickname_textview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="@string/name"
+        android:theme="@style/NameStyle"
+        android:visibility="visible" />
 
     <ImageView
         android:id="@+id/star_image"
@@ -27,6 +30,25 @@
         android:layout_marginTop="@dimen/layout_margin"
         android:contentDescription="@string/yellow_star"
         app:srcCompat="@android:drawable/btn_star_big_on" />
+
+    <EditText
+        android:id="@+id/nickname_edit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:hint="@string/enter_your_name"
+        android:autofillHints="Fill hint enter name"/>
+
+    <Button
+        android:id="@+id/done_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="@string/done_button"
+        android:textAlignment="center"
+        android:background="@color/colorPrimary"
+        android:textColor="@android:color/white"/>
 
     <ScrollView
         android:layout_width="match_parent"

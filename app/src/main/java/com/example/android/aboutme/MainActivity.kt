@@ -16,8 +16,15 @@
 
 package com.example.android.aboutme
 
+import android.content.Context
 import android.os.Bundle
+import android.view.View
+import android.view.inputmethod.InputMethodManager
+import android.widget.Button
+import android.widget.EditText
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import kotlinx.android.synthetic.main.activity_main.*
 
 
 /**
@@ -35,6 +42,26 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        //TODO: refactor this
+        //1. Create onCLicklistener on the button
+        //2. define a function to perform all the actions on the UI
+
+        val done_btn: Button = findViewById(R.id.done_button)
+        val nickname_input: EditText = findViewById(R.id.nickname_edit)
+        val nickname: TextView = findViewById(R.id.nickname_textview)
+
+        done_btn.setOnClickListener {
+            val nickanme_temp: String = nickname_input.text.toString()
+                nickname.text = nickanme_temp
+            nickname_textview.visibility = View.VISIBLE
+
+            // Hide the keyboard.
+            val imm = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+            imm.hideSoftInputFromWindow(it.windowToken, 0)
+        }
+
+
 
         // TODO (04) Add a click handler for the Done button to process the input and update the visibility of the views
     }

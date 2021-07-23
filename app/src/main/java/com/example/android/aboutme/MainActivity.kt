@@ -48,21 +48,25 @@ class MainActivity : AppCompatActivity() {
         //2. define a function to perform all the actions on the UI
 
         val done_btn: Button = findViewById(R.id.done_button)
+
+        done_btn.setOnClickListener {
+            showNickname(it)
+        }
+
+    }
+
+    private fun showNickname (view: View) {
         val nickname_input: EditText = findViewById(R.id.nickname_edit)
         val nickname: TextView = findViewById(R.id.nickname_textview)
 
-        done_btn.setOnClickListener {
-            val nickanme_temp: String = nickname_input.text.toString()
-                nickname.text = nickanme_temp
-            nickname_textview.visibility = View.VISIBLE
+        nickname.text = nickname_input.text
+        nickname_textview.visibility = View.VISIBLE
+        nickname_input.visibility = View.GONE
+        view.visibility = View.GONE
 
-            // Hide the keyboard.
-            val imm = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
-            imm.hideSoftInputFromWindow(it.windowToken, 0)
-        }
-
-
-
-        // TODO (04) Add a click handler for the Done button to process the input and update the visibility of the views
+        // Hide the keyboard.
+        val imm = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+        imm.hideSoftInputFromWindow(view.windowToken, 0)
     }
+
 }
